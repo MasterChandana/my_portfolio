@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M. Chandana Kumar Patra • Portfolio</title>
+  <meta name="description"
+    content="Portfolio of M. Chandana Kumar Patra – MCA (2026): Java, Kotlin, Spring Boot, Web, Android, Hackathons." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1020;
+      /* deep navy */
+      --panel: #111731;
+      /* card bg */
+      --text: #e8ecff;
+      /* primary text */
+      --muted: #a9b2d6;
+      /* secondary text */
+      --accent: #7c5cff;
+      /* violet */
+      --accent-2: #34d399;
+      /* teal */
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --radius: 18px;
+      --header-h: 72px;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      margin: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(124, 92, 255, 0.22), transparent 60%),
+        radial-gradient(800px 400px at 10% 110%, rgba(52, 211, 153, 0.16), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    /* Cursor glow that follows the mouse */
+    .glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0
+    }
+
+    .glow::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(124, 92, 255, .25), transparent 60%);
+      transform: translate(var(--mx, -50%), var(--my, -50%));
+      transition: transform .15s ease-out;
+      filter: blur(18px);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none
+    }
+
+    a:hover {
+      opacity: .9
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px
+    }
+
+    /* Header / Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(8px);
+      background: rgba(11, 16, 32, 0.6);
+      border-bottom: 1px solid var(--border);
+      z-index: 50
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: var(--header-h)
+    }
+
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: var(--accent)
+    }
+
+    .brand-name {
+      font-weight: 700
+    }
+
+    nav ul {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+      margin: 0;
+      padding: 0
+    }
+
+    nav a {
+      color: var(--text);
+      font-weight: 600;
+      opacity: .9;
+      padding: 10px 12px;
+      border-radius: 10px;
+      display: inline-block
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.05)
+    }
+
+    nav a.active {
+      background: linear-gradient(135deg, var(--accent), #9f83ff);
+      color: white
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 10px
+    }
+
+    @media (max-width:860px) {
+      nav ul {
+        position: absolute;
+        top: var(--header-h);
+        left: 0;
+        right: 0;
+        background: rgba(11, 16, 32, 0.95);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 16px 20px;
+        display: none
+      }
+
+      nav ul.open {
+        display: flex
+      }
+
+      .menu-toggle {
+        display: inline-flex
+      }
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: center;
+      padding: 42px 0
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      z-index: 1
+    }
+
+    .kicker {
+      color: var(--accent-2);
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .8rem
+    }
+
+    h1 {
+      margin: .2em 0 .2em;
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.15
+    }
+
+    .sub {
+      color: var(--muted)
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px
+    }
+
+    .badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .85rem;
+      background: rgba(255, 255, 255, 0.02)
+    }
+
+    .hero-img {
+      aspect-ratio: 1/1;
+      border-radius: 20px;
+      background: linear-gradient(160deg, rgba(124, 92, 255, .25), transparent), url('your-photo.jpg') center/cover;
+      min-height: 260px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow)
+    }
+
+    /* Sections */
+    section {
+      padding: 28px 0;
+      scroll-margin-top: calc(var(--header-h) + 12px)
+    }
+
+    h2 {
+      font-size: clamp(22px, 3.2vw, 30px);
+      margin: 8px 0 16px
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px
+    }
+
+    .grid.cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+
+    .grid.cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+
+    @media (max-width:900px) {
+      .hero {
+        grid-template-columns: 1fr
+      }
+
+      .grid.cols-3 {
+        grid-template-columns: 1fr
+      }
+
+      .grid.cols-2 {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* Project card */
+    .project {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transform-style: preserve-3d;
+      transition: transform .2s ease
+    }
+
+    .project:hover {
+      transform: translateY(-4px) scale(1.01)
+    }
+
+    .project .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .tag {
+      font-size: .78rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 8px;
+      color: var(--muted)
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--accent), #9f83ff);
+      border: none;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transform: translateZ(0);
+      transition: transform .15s ease, box-shadow .2s ease
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, .35)
+    }
+
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      box-shadow: none
+    }
+
+    .btn.ghost:hover {
+      background: rgba(255, 255, 255, 0.06)
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .6s ease, transform .6s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      padding: 24px 0;
+      color: var(--muted);
+      text-align: center
+    }
+  </style>
+</head>
+
+<body>
+  <!-- cursor-follow glow -->
+  <div class="glow" aria-hidden="true"></div>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">CP</div>
+        <strong class="brand-name">M. Chandana Kumar Patra</strong>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-controls="primary-nav"
+        aria-expanded="false">Menu</button>
+      <nav aria-label="Primary">
+        <ul id="primary-nav">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" aria-label="Intro section" id="home">
+      <div class="card reveal">
+        <div class="kicker">MCA • 2026</div>
+        <h1>Software Developer — Java • Kotlin • Spring Boot • Web</h1>
+        <p class="sub">MCA (Computer Science) student at Centurion University, building real‑world apps across web,
+          Android, and systems. Hackathon participant and event organizer; passionate about clean UI and practical
+          problem‑solving.</p>
+        <div class="badges" aria-label="Quick facts">
+          <span class="badge">Java</span>
+          <span class="badge">Kotlin</span>
+          <span class="badge">Spring Boot</span>
+          <span class="badge">HTML • CSS • JS</span>
+          <span class="badge">MySQL</span>
+          <span class="badge">Android</span>
+        </div>
+        <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn ghost" href="https://github.com/MasterChandana" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="hero-img reveal" role="img" aria-label="Your photo (replace your-photo.jpg)"></div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2 class="reveal">About</h2>
+      <div class="card reveal">
+        <p>
+          I’m <strong>M. Chandana Kumar Patra</strong>, an MCA student (Computer Science, graduating 2026) focused on
+          building practical applications in Java/Kotlin and Spring Boot with modern web UIs.
+          I enjoy hackathons and recently coordinated an intra‑university Java Swing hackathon, sharpening my leadership
+          and teamwork.
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2 class="reveal">Skills</h2>
+      <div class="grid cols-3">
+        <div class="card reveal"><strong>Languages</strong>
+          <p class="muted">Java, Kotlin, C, JavaScript, HTML, CSS</p>
+        </div>
+        <div class="card reveal"><strong>Frameworks</strong>
+          <p class="muted">Spring Boot, Bootstrap</p>
+        </div>
+        <div class="card reveal"><strong>Databases/Tools</strong>
+          <p class="muted">MySQL, Git & GitHub</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="reveal">Projects</h2>
+      <div class="grid cols-2">
+        <article class="card project reveal">
+          <div class="title">
+            <h3>TodoApp – Task Management</h3>
+            <a class="btn ghost" href="https://github.com/MasterChandana/todoapp" target="_blank" rel="noopener"
+              aria-label="Open TodoApp on GitHub">GitHub</a>
+          </div>
+          <p class="muted">Full‑stack task manager built with <strong>Spring Boot</strong>, <strong>Bootstrap</strong>,
+            and <strong>MySQL</strong> featuring auth and CRUD APIs.</p>
+          <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Bootstrap</span><span
+              class="tag">MySQL</span></div>
+        </article>
+
+        <article class="card project reveal">
+          <div class="title">
+            <h3>Calculator (Login)</h3>
+            <a class="btn ghost" href="https://github.com/MasterChandana/calculator-login-app" target="_blank"
+              rel="noopener" aria-label="Open Calculator project on GitHub">GitHub</a>
+          </div>
+          <p class="muted">Android calculator with <strong>login authentication</strong> built in
+            <strong>Kotlin</strong>. Clean UI and secure flow.</p>
+          <div class="tags"><span class="tag">Kotlin</span><span class="tag">Android</span></div>
+        </article>
+
+        <article class="card project reveal">
+          <div class="title">
+            <h3>My Language – Mini Compiler</h3>
+            <a class="btn ghost" href="https://github.com/MasterChandana/my-language" target="_blank" rel="noopener"
+              aria-label="Open My Language on GitHub">GitHub</a>
+          </div>
+          <p class="muted">Custom language with tokenizer, parser, and AST in <strong>JavaScript</strong>. Demonstrates
+            compiler design concepts.</p>
+          <div class="tags"><span class="tag">JavaScript</span><span class="tag">Compiler</span></div>
+        </article>
+
+        <article class="card project reveal">
+          <div class="title">
+            <h3>Tic‑Tac‑Toe</h3>
+            <a class="btn ghost" href="https://github.com/MasterChandana/java_Tic_Tac_Toe" target="_blank"
+              rel="noopener" aria-label="Open Tic Tac Toe on GitHub">GitHub</a>
+          </div>
+          <p class="muted">Classic game implemented in <strong>Java</strong> with focus on game logic and clean
+            interaction.</p>
+          <div class="tags"><span class="tag">Java</span><span class="tag">Game</span></div>
+        </article>
+
+        <article class="card project reveal">
+          <div class="title">
+            <h3>RecoMed (Hackathon)</h3>
+            <a class="btn ghost" href="https://github.com/Numericalalpha02/RecoMed" target="_blank" rel="noopener"
+              aria-label="Open RecoMed on GitHub">GitHub</a>
+          </div>
+          <p class="muted">Healthcare recommendation web app with <strong>HTML/CSS/JS</strong>. Won <em>Best UI</em> at
+            a hackathon.</p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+          </div>
+        </article>
+
+        <article class="card project reveal">
+          <div class="title">
+            <h3>ATM Interface</h3>
+            <a class="btn ghost" href="https://github.com/MasterChandana/ATM-Interface" target="_blank" rel="noopener"
+              aria-label="Open ATM Interface on GitHub">GitHub</a>
+          </div>
+          <p class="muted">Java Swing application simulating core ATM operations with OOP design.</p>
+          <div class="tags"><span class="tag">Java</span><span class="tag">Swing</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="reveal">Contact</h2>
+      <div class="card reveal">
+        <p class="muted">Open to internships and entry‑level software roles. Feel free to reach out!</p>
+        <p>
+          <strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a>
+          <br />
+          <strong>GitHub:</strong> <a href="https://github.com/MasterChandana" target="_blank"
+            rel="noopener">github.com/MasterChandana</a>
+          <br />
+          <strong>LinkedIn:</strong> <a href="#" target="_blank" rel="noopener">linkedin.com/in/your‑profile</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> M. Chandana Kumar Patra • Built with HTML, CSS & JS</div>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('primary-nav');
+    toggle?.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+
+    // Close menu on link click (mobile)
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+    // Active link highlight on scroll
+    const links = Array.from(document.querySelectorAll('nav a'));
+    const sections = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = '#' + e.target.id;
+          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+        }
+      })
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: [0, 1] });
+    sections.forEach(s => io.observe(s));
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const revIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revIO.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => revIO.observe(el));
+
+    // Cursor-follow glow
+    const glow = document.querySelector('.glow');
+    window.addEventListener('mousemove', (ev) => {
+      document.documentElement.style.setProperty('--mx', ev.clientX - 210 + 'px');
+      document.documentElement.style.setProperty('--my', ev.clientY - 210 + 'px');
+    });
+  </script>
+</body>
+
+</html>
