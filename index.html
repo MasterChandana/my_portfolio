@@ -2,596 +2,951 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>M. Chandana Kumar Patra • Portfolio</title>
-  <meta name="description"
-    content="Portfolio of M. Chandana Kumar Patra – MCA (2026): Java, Kotlin, Spring Boot, Web, Android, Hackathons." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0b1020;
-      /* deep navy */
-      --panel: #111731;
-      /* card bg */
-      --text: #e8ecff;
-      /* primary text */
-      --muted: #a9b2d6;
-      /* secondary text */
-      --accent: #7c5cff;
-      /* violet */
-      --accent-2: #34d399;
-      /* teal */
-      --border: rgba(255, 255, 255, 0.08);
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-      --radius: 18px;
-      --header-h: 72px;
-    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>M. Chandana Kumar Patra • Portfolio</title>
+    <meta name="description"
+        content="Portfolio of M. Chandana Kumar Patra – MCA (2026): Java, Kotlin, Spring Boot, Web, Android, Hackathons." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b1020;
+            --panel: #12182e;
+            --text: #e8ecff;
+            --muted: #a9b2d6;
+            --accent: #7c5cff;
+            --accent-2: #34d399;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            --radius: 18px;
+            --header-h: 72px;
+            --gradient-1: linear-gradient(120deg, #7c5cff 0%, #34d399 100%);
+            --gradient-2: linear-gradient(135deg, #222845 0%, #2a3157 100%);
+            --glass: rgba(25, 32, 61, 0.7);
+            --hero-img-shadow: 0 6px 40px 0 rgba(124, 92, 255, 0.18);
+            --avatar-size: 370px;
+        }
 
-    * {
-      box-sizing: border-box
-    }
+        * {
+            box-sizing: border-box
+        }
 
-    html,
-    body {
-      margin: 0
-    }
+        html,
+        body {
+            margin: 0
+        }
 
-    html {
-      scroll-behavior: smooth
-    }
+        html {
+            scroll-behavior: smooth
+        }
 
-    body {
-      font-family: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(124, 92, 255, 0.22), transparent 60%),
-        radial-gradient(800px 400px at 10% 110%, rgba(52, 211, 153, 0.16), transparent 60%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      min-height: 100vh;
-    }
+        body {
+            font-family: "Inter", system-ui, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            background:
+                radial-gradient(1200px 600px at 80% -10%, rgba(124, 92, 255, 0.22), transparent 60%),
+                radial-gradient(800px 400px at 10% 110%, rgba(52, 211, 153, 0.16), transparent 60%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            min-height: 100vh;
+            background-attachment: fixed;
+            /* Make sure stars background canvas doesn't overlap content */
+            position: relative;
+            overflow-x: hidden;
+        }
 
-    /* Cursor glow that follows the mouse */
-    .glow {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0
-    }
+        /* Animated stars background (canvas is absolutely positioned) */
+        #stars-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            background: transparent;
+        }
 
-    .glow::before {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      background: radial-gradient(circle at center, rgba(124, 92, 255, .25), transparent 60%);
-      transform: translate(var(--mx, -50%), var(--my, -50%));
-      transition: transform .15s ease-out;
-      filter: blur(18px);
-    }
+        .glow {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
 
-    a {
-      color: var(--accent);
-      text-decoration: none
-    }
+        .glow::before {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, rgba(124, 92, 255, .28), transparent 60%);
+            transform: translate(var(--mx, -50%), var(--my, -50%));
+            transition: transform .15s ease-out;
+            filter: blur(18px);
+        }
 
-    a:hover {
-      opacity: .9
-    }
+        a {
+            color: var(--accent);
+            text-decoration: none
+        }
 
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 24px
-    }
+        a:hover {
+            opacity: .93
+        }
 
-    /* Header / Navbar */
-    header {
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(8px);
-      background: rgba(11, 16, 32, 0.6);
-      border-bottom: 1px solid var(--border);
-      z-index: 50
-    }
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 24px
+        }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: var(--header-h)
-    }
+        header {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            background: rgba(11, 16, 32, 0.7);
+            border-bottom: 1px solid var(--border);
+            z-index: 50
+        }
 
-    .brand {
-      display: flex;
-      gap: 12px;
-      align-items: center
-    }
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: var(--header-h)
+        }
 
-    .logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      border: 2px solid var(--accent);
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      color: var(--accent)
-    }
+        .brand {
+            display: flex;
+            gap: 16px;
+            align-items: center
+        }
 
-    .brand-name {
-      font-weight: 700
-    }
+        .logo {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 2.5px solid var(--accent);
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            color: var(--accent);
+            background: var(--panel);
+            font-size: 1.7rem;
+            box-shadow: 0 2px 14px 0 rgba(124, 92, 255, 0.12);
+            letter-spacing: -1px;
+        }
 
-    nav ul {
-      display: flex;
-      gap: 18px;
-      list-style: none;
-      margin: 0;
-      padding: 0
-    }
+        .brand-name {
+            font-weight: 700;
+            font-size: 1.18rem;
+            letter-spacing: .01em;
+            color: #fff;
+        }
 
-    nav a {
-      color: var(--text);
-      font-weight: 600;
-      opacity: .9;
-      padding: 10px 12px;
-      border-radius: 10px;
-      display: inline-block
-    }
+        nav ul {
+            display: flex;
+            gap: 18px;
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
 
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.05)
-    }
+        nav a {
+            color: var(--text);
+            font-weight: 600;
+            opacity: .91;
+            padding: 10px 14px;
+            border-radius: 10px;
+            display: inline-block;
+            font-size: 1rem;
+            transition: background .18s;
+        }
 
-    nav a.active {
-      background: linear-gradient(135deg, var(--accent), #9f83ff);
-      color: white
-    }
+        nav a:hover,
+        nav a.active {
+            background: var(--gradient-1);
+            color: #fff;
+            opacity: 1;
+            box-shadow: 0 2px 8px 0 rgba(52, 211, 153, 0.11);
+        }
 
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 8px 12px;
-      border-radius: 10px
-    }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-family: inherit
+        }
 
-    @media (max-width:860px) {
-      nav ul {
-        position: absolute;
-        top: var(--header-h);
-        left: 0;
-        right: 0;
-        background: rgba(11, 16, 32, 0.95);
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        padding: 16px 20px;
-        display: none
-      }
+        @media (max-width:860px) {
+            nav ul {
+                position: absolute;
+                top: var(--header-h);
+                left: 0;
+                right: 0;
+                background: rgba(18, 24, 46, 0.98);
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                padding: 16px 20px;
+                display: none
+            }
 
-      nav ul.open {
-        display: flex
-      }
+            nav ul.open {
+                display: flex
+            }
 
-      .menu-toggle {
-        display: inline-flex
-      }
-    }
+            .menu-toggle {
+                display: inline-flex
+            }
+        }
 
-    /* Hero */
-    .hero {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 28px;
-      align-items: center;
-      padding: 42px 0
-    }
+        .hero {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.3fr .85fr;
+            gap: 38px;
+            align-items: center;
+            padding: 60px 0 46px 0;
+            z-index: 2;
+        }
 
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
-      position: relative;
-      z-index: 1
-    }
+        .card {
+            background: var(--glass);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2.1rem 2rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(6px);
+            transition: box-shadow .2s;
+        }
 
-    .kicker {
-      color: var(--accent-2);
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      font-size: .8rem
-    }
+        .card:hover {
+            box-shadow: 0 14px 38px rgba(124, 92, 255, 0.13), var(--shadow);
+        }
 
-    h1 {
-      margin: .2em 0 .2em;
-      font-size: clamp(28px, 5vw, 44px);
-      line-height: 1.15
-    }
+        .kicker {
+            color: var(--accent-2);
+            font-weight: 800;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+            font-size: .86rem;
+            margin-bottom: 3px;
+            font-family: 'Fira Code', monospace;
+        }
 
-    .sub {
-      color: var(--muted)
-    }
+        h1 {
+            margin: .2em 0 .2em;
+            font-size: clamp(32px, 6vw, 48px);
+            line-height: 1.13;
+            background: linear-gradient(90deg, var(--accent), #34d399 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px
-    }
+        .sub {
+            color: var(--muted);
+            font-size: 1.17rem;
+            margin-bottom: 10px;
+        }
 
-    .badge {
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: .85rem;
-      background: rgba(255, 255, 255, 0.02)
-    }
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+            margin-bottom: 6px;
+        }
 
-    .hero-img {
-      aspect-ratio: 1/1;
-      border-radius: 20px;
-      background: linear-gradient(160deg, rgba(124, 92, 255, .25), transparent), url('your-photo.jpg') center/cover;
-      min-height: 260px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow)
-    }
+        .badge {
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-size: .97rem;
+            background: rgba(255, 255, 255, 0.03);
+            font-family: 'Fira Code', monospace;
+            transition: background .18s;
+        }
 
-    /* Sections */
-    section {
-      padding: 28px 0;
-      scroll-margin-top: calc(var(--header-h) + 12px)
-    }
+        .badge:hover {
+            background: var(--gradient-1);
+            color: #fff;
+            border-color: var(--accent);
+        }
 
-    h2 {
-      font-size: clamp(22px, 3.2vw, 30px);
-      margin: 8px 0 16px
-    }
+        /* Animated hero image frame and image */
+        .hero-img {
+            --frame-size: 22px;
+            width: calc(var(--avatar-size) + var(--frame-size)*2);
+            height: calc(var(--avatar-size) + var(--frame-size)*2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            animation: heroImgPop 1.9s cubic-bezier(.42, .23, .82, 1.24) 0s 1;
+        }
 
-    .muted {
-      color: var(--muted)
-    }
+        @keyframes heroImgPop {
+            0% {
+                transform: scale(.5) rotate(-8deg);
+                opacity: .1;
+            }
 
-    .grid {
-      display: grid;
-      gap: 20px
-    }
+            90% {
+                transform: scale(1.07) rotate(3deg);
+            }
 
-    .grid.cols-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr))
-    }
+            100% {
+                transform: scale(1) rotate(0);
+            }
+        }
 
-    .grid.cols-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr))
-    }
+        .hero-img-frame {
+            width: calc(var(--avatar-size) + var(--frame-size)*2);
+            height: calc(var(--avatar-size) + var(--frame-size)*2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: none;
+            z-index: 2;
+        }
 
-    @media (max-width:900px) {
-      .hero {
-        grid-template-columns: 1fr
-      }
+        .hero-img-frame::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            padding: 0;
+            z-index: 1;
+            background: conic-gradient(from 0deg, var(--accent), #34d399, var(--accent), #34d399, var(--accent));
+            filter: blur(3px);
+            opacity: 0.85;
+            animation: spinFrame 4s linear infinite;
+        }
 
-      .grid.cols-3 {
-        grid-template-columns: 1fr
-      }
+        .hero-img-frame::after {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            border-radius: 50%;
+            background: rgba(12, 18, 30, 0.56);
+            z-index: 2;
+        }
 
-      .grid.cols-2 {
-        grid-template-columns: 1fr
-      }
-    }
+        @keyframes spinFrame {
+            0% {
+                transform: rotate(0deg);
+            }
 
-    /* Project card */
-    .project {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transform-style: preserve-3d;
-      transition: transform .2s ease
-    }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
-    .project:hover {
-      transform: translateY(-4px) scale(1.01)
-    }
+        .hero-img-photo {
+            position: relative;
+            width: var(--avatar-size);
+            height: var(--avatar-size);
+            border-radius: 50%;
+            background:
+                linear-gradient(160deg, rgba(124, 92, 255, .22), transparent 60%),
+                url('https://avatars.githubusercontent.com/u/189424131?v=4') center/cover;
+            border: 8px solid rgba(12, 20, 45, 0.93);
+            box-shadow: var(--hero-img-shadow), 0 3px 28px 0 rgba(52, 211, 153, 0.12);
+            z-index: 3;
+            overflow: hidden;
+            animation: popGlow 3.2s cubic-bezier(.28, .65, .38, 1.2) 0s 1;
+        }
 
-    .project .title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px
-    }
+        @keyframes popGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(124, 92, 255, 0.09);
+                opacity: 0.1;
+            }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px
-    }
+            65% {
+                box-shadow: 0 0 48px 16px rgba(124, 92, 255, 0.20);
+                opacity: 1;
+            }
 
-    .tag {
-      font-size: .78rem;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 4px 8px;
-      color: var(--muted)
-    }
+            100% {
+                box-shadow: var(--hero-img-shadow), 0 3px 28px 0 rgba(52, 211, 153, 0.12);
+            }
+        }
 
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, var(--accent), #9f83ff);
-      border: none;
-      color: white;
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-weight: 700;
-      box-shadow: var(--shadow);
-      cursor: pointer;
-      transform: translateZ(0);
-      transition: transform .15s ease, box-shadow .2s ease
-    }
+        @media (max-width:900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+                justify-content: center;
+            }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, .35)
-    }
+            .hero-img {
+                margin-top: 24px;
+                --avatar-size: 210px;
+            }
 
-    .btn.ghost {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text);
-      box-shadow: none
-    }
+            .hero-img-frame {
+                --avatar-size: 210px;
+            }
 
-    .btn.ghost:hover {
-      background: rgba(255, 255, 255, 0.06)
-    }
+            .hero-img-photo {
+                --avatar-size: 210px;
+            }
+        }
 
-    /* Reveal on scroll */
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity .6s ease, transform .6s ease
-    }
+        section {
+            padding: 34px 0;
+            scroll-margin-top: calc(var(--header-h) + 16px)
+        }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: none
-    }
+        h2 {
+            font-size: clamp(22px, 3.2vw, 32px);
+            margin: 8px 0 18px;
+            letter-spacing: .01em;
+            color: #fff;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent), #34d399 70%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      margin-top: 40px;
-      padding: 24px 0;
-      color: var(--muted);
-      text-align: center
-    }
-  </style>
+        .muted {
+            color: var(--muted);
+            font-size: 1.08rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 22px
+        }
+
+        .grid.cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr))
+        }
+
+        .grid.cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr))
+        }
+
+        @media (max-width:900px) {
+            .grid.cols-3 {
+                grid-template-columns: 1fr
+            }
+
+            .grid.cols-2 {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .project {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transform-style: preserve-3d;
+            transition: transform .2s cubic-bezier(.54, .15, .98, .52);
+            background: var(--gradient-2);
+            border-radius: var(--radius);
+            border: 1.5px solid var(--border);
+            padding-bottom: 9px;
+        }
+
+        .project:hover {
+            transform: translateY(-6px) scale(1.02) rotateX(1deg);
+            box-shadow: 0 12px 34px 0 rgba(124, 92, 255, 0.14);
+            border-color: var(--accent);
+        }
+
+        .project .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .tag {
+            font-size: .83rem;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 4px 9px;
+            color: var(--muted);
+            font-family: 'Fira Code', monospace;
+            background: rgba(255, 255, 255, 0.04);
+            transition: background .18s;
+        }
+
+        .tag:hover {
+            background: var(--gradient-1);
+            color: #fff;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient-1);
+            border: none;
+            color: white;
+            padding: 13px 19px;
+            border-radius: 12px;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transform: translateZ(0);
+            transition: transform .15s, box-shadow .2s, background .18s;
+            font-size: 1rem;
+            letter-spacing: .01em;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 14px 28px rgba(52, 211, 153, .10);
+            background: linear-gradient(135deg, #34d399, #7c5cff 70%);
+        }
+
+        .btn.ghost {
+            background: transparent;
+            border: 1.5px solid var(--accent-2);
+            color: var(--text);
+            box-shadow: none;
+            font-weight: 600;
+        }
+
+        .btn.ghost:hover {
+            background: rgba(53, 211, 153, 0.07);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity .7s cubic-bezier(.37, .06, .67, 1.08), transform .7s cubic-bezier(.36, .06, .67, 1.08)
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            margin-top: 48px;
+            padding: 26px 0 16px 0;
+            color: var(--muted);
+            text-align: center;
+            background: rgba(11, 16, 32, 0.62);
+            font-size: 1.01rem;
+            letter-spacing: .01em;
+        }
+
+        .socials {
+            display: flex;
+            gap: 16px;
+            margin-top: 10px;
+            margin-bottom: 6px;
+        }
+
+        .socials a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(124, 92, 255, 0.07);
+            color: var(--accent);
+            font-size: 1.28rem;
+            transition: background .16s, color .18s, box-shadow .18s;
+            border: 1.5px solid transparent;
+        }
+
+        .socials a:hover {
+            color: #fff;
+            background: var(--gradient-1);
+            border-color: var(--accent-2);
+            box-shadow: 0 3px 18px 0 rgba(124, 92, 255, 0.15);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            background: #181e35;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #23284a;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #343b67;
+        }
+    </style>
 </head>
 
 <body>
-  <!-- cursor-follow glow -->
-  <div class="glow" aria-hidden="true"></div>
+    <!-- animated stars bg -->
+    <canvas id="stars-canvas"></canvas>
+    <!-- cursor-follow glow -->
+    <div class="glow" aria-hidden="true"></div>
 
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <div class="logo">CP</div>
-        <strong class="brand-name">M. Chandana Kumar Patra</strong>
-      </div>
-      <button class="menu-toggle" aria-label="Toggle navigation" aria-controls="primary-nav"
-        aria-expanded="false">Menu</button>
-      <nav aria-label="Primary">
-        <ul id="primary-nav">
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <!-- Hero -->
-    <section class="hero" aria-label="Intro section" id="home">
-      <div class="card reveal">
-        <div class="kicker">MCA • 2026</div>
-        <h1>Software Developer — Java • Kotlin • Spring Boot • Web</h1>
-        <p class="sub">MCA (Computer Science) student at Centurion University, building real‑world apps across web,
-          Android, and systems. Hackathon participant and event organizer; passionate about clean UI and practical
-          problem‑solving.</p>
-        <div class="badges" aria-label="Quick facts">
-          <span class="badge">Java</span>
-          <span class="badge">Kotlin</span>
-          <span class="badge">Spring Boot</span>
-          <span class="badge">HTML • CSS • JS</span>
-          <span class="badge">MySQL</span>
-          <span class="badge">Android</span>
+    <header>
+        <div class="container nav">
+            <div class="brand">
+                <div class="logo">CP</div>
+                <strong class="brand-name">M. Chandana Kumar Patra</strong>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-controls="primary-nav"
+                aria-expanded="false">Menu</button>
+            <nav aria-label="Primary">
+                <ul id="primary-nav">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
-          <a class="btn" href="#projects">View Projects</a>
-          <a class="btn ghost" href="https://github.com/MasterChandana" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-      <div class="hero-img reveal" role="img" aria-label="Your photo (replace your-photo.jpg)"></div>
-    </section>
+    </header>
 
-    <!-- About -->
-    <section id="about">
-      <h2 class="reveal">About</h2>
-      <div class="card reveal">
-        <p>
-          I’m <strong>M. Chandana Kumar Patra</strong>, an MCA student (Computer Science, graduating 2026) focused on
-          building practical applications in Java/Kotlin and Spring Boot with modern web UIs.
-          I enjoy hackathons and recently coordinated an intra‑university Java Swing hackathon, sharpening my leadership
-          and teamwork.
-        </p>
-      </div>
-    </section>
+    <main class="container">
+        <!-- Hero -->
+        <section class="hero" aria-label="Intro section" id="home">
+            <div class="card reveal">
+                <div class="kicker">MCA • 2026</div>
+                <h1>Software Developer — Java • Kotlin • Spring Boot • Web</h1>
+                <p class="sub">MCA (Computer Science) student at Centurion University, building real‑world apps across
+                    web,
+                    Android, and systems. Hackathon participant and event organizer; passionate about clean UI and
+                    practical
+                    problem‑solving.
+                </p>
+                <div class="badges" aria-label="Quick facts">
+                    <span class="badge">Java</span>
+                    <span class="badge">Kotlin</span>
+                    <span class="badge">Spring Boot</span>
+                    <span class="badge">HTML • CSS • JS</span>
+                    <span class="badge">MySQL</span>
+                    <span class="badge">Android</span>
+                </div>
+                <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+                    <a class="btn" href="#projects">View Projects</a>
+                    <a class="btn ghost" href="https://github.com/MasterChandana" target="_blank"
+                        rel="noopener">GitHub</a>
+                </div>
+            </div>
+            <div class="hero-img reveal" role="img" aria-label="Photo of M. Chandana Kumar Patra">
+                <div class="hero-img-frame">
+                    <div class="hero-img-photo"></div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Skills -->
-    <section id="skills">
-      <h2 class="reveal">Skills</h2>
-      <div class="grid cols-3">
-        <div class="card reveal"><strong>Languages</strong>
-          <p class="muted">Java, Kotlin, C, JavaScript, HTML, CSS</p>
-        </div>
-        <div class="card reveal"><strong>Frameworks</strong>
-          <p class="muted">Spring Boot, Bootstrap</p>
-        </div>
-        <div class="card reveal"><strong>Databases/Tools</strong>
-          <p class="muted">MySQL, Git & GitHub</p>
-        </div>
-      </div>
-    </section>
+        <!-- About -->
+        <section id="about">
+            <h2 class="reveal">About</h2>
+            <div class="card reveal">
+                <p>
+                    I’m <strong>M. Chandana Kumar Patra</strong>, an MCA student (Computer Science, graduating 2026)
+                    focused on
+                    building practical applications in Java/Kotlin and Spring Boot with modern web UIs.
+                    I enjoy hackathons and recently coordinated an intra‑university Java Swing hackathon, sharpening my
+                    leadership
+                    and teamwork.
+                </p>
+                <p>
+                    I love learning new technologies and solving real-world problems through code.<br>
+                    <span style="color:#7c5cff;font-style:italic;">“Turning ideas into impactful apps and beautiful
+                        interfaces.”</span>
+                </p>
+            </div>
+        </section>
 
-    <!-- Projects -->
-    <section id="projects">
-      <h2 class="reveal">Projects</h2>
-      <div class="grid cols-2">
-        <article class="card project reveal">
-          <div class="title">
-            <h3>TodoApp – Task Management</h3>
-            <a class="btn ghost" href="https://github.com/MasterChandana/todoapp" target="_blank" rel="noopener"
-              aria-label="Open TodoApp on GitHub">GitHub</a>
-          </div>
-          <p class="muted">Full‑stack task manager built with <strong>Spring Boot</strong>, <strong>Bootstrap</strong>,
-            and <strong>MySQL</strong> featuring auth and CRUD APIs.</p>
-          <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Bootstrap</span><span
-              class="tag">MySQL</span></div>
-        </article>
+        <!-- Skills -->
+        <section id="skills">
+            <h2 class="reveal">Skills</h2>
+            <div class="grid cols-3">
+                <div class="card reveal"><strong>Languages</strong>
+                    <p class="muted">Java, Kotlin, C, JavaScript, HTML, CSS</p>
+                </div>
+                <div class="card reveal"><strong>Frameworks</strong>
+                    <p class="muted">Spring Boot, Bootstrap</p>
+                </div>
+                <div class="card reveal"><strong>Databases/Tools</strong>
+                    <p class="muted">MySQL, Git & GitHub</p>
+                </div>
+            </div>
+        </section>
 
-        <article class="card project reveal">
-          <div class="title">
-            <h3>Calculator (Login)</h3>
-            <a class="btn ghost" href="https://github.com/MasterChandana/calculator-login-app" target="_blank"
-              rel="noopener" aria-label="Open Calculator project on GitHub">GitHub</a>
-          </div>
-          <p class="muted">Android calculator with <strong>login authentication</strong> built in
-            <strong>Kotlin</strong>. Clean UI and secure flow.</p>
-          <div class="tags"><span class="tag">Kotlin</span><span class="tag">Android</span></div>
-        </article>
+        <!-- Projects -->
+        <section id="projects">
+            <h2 class="reveal">Projects</h2>
+            <div class="grid cols-2">
+                <article class="card project reveal">
+                    <div class="title">
+                        <h3>TodoApp – Task Management</h3>
+                        <a class="btn ghost" href="https://github.com/MasterChandana/todoapp" target="_blank"
+                            rel="noopener" aria-label="Open TodoApp on GitHub">GitHub</a>
+                    </div>
+                    <p class="muted">Full‑stack task manager built with <strong>Spring Boot</strong>,
+                        <strong>Bootstrap</strong>,
+                        and <strong>MySQL</strong> featuring auth and CRUD APIs.</p>
+                    <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Bootstrap</span><span
+                            class="tag">MySQL</span></div>
+                </article>
 
-        <article class="card project reveal">
-          <div class="title">
-            <h3>My Language – Mini Compiler</h3>
-            <a class="btn ghost" href="https://github.com/MasterChandana/my-language" target="_blank" rel="noopener"
-              aria-label="Open My Language on GitHub">GitHub</a>
-          </div>
-          <p class="muted">Custom language with tokenizer, parser, and AST in <strong>JavaScript</strong>. Demonstrates
-            compiler design concepts.</p>
-          <div class="tags"><span class="tag">JavaScript</span><span class="tag">Compiler</span></div>
-        </article>
+                <article class="card project reveal">
+                    <div class="title">
+                        <h3>Calculator (Login)</h3>
+                        <a class="btn ghost" href="https://github.com/MasterChandana/calculator-login-app"
+                            target="_blank" rel="noopener" aria-label="Open Calculator project on GitHub">GitHub</a>
+                    </div>
+                    <p class="muted">Android calculator with <strong>login authentication</strong> built in
+                        <strong>Kotlin</strong>. Clean UI and secure flow.
+                    </p>
+                    <div class="tags"><span class="tag">Kotlin</span><span class="tag">Android</span></div>
+                </article>
 
-        <article class="card project reveal">
-          <div class="title">
-            <h3>Tic‑Tac‑Toe</h3>
-            <a class="btn ghost" href="https://github.com/MasterChandana/java_Tic_Tac_Toe" target="_blank"
-              rel="noopener" aria-label="Open Tic Tac Toe on GitHub">GitHub</a>
-          </div>
-          <p class="muted">Classic game implemented in <strong>Java</strong> with focus on game logic and clean
-            interaction.</p>
-          <div class="tags"><span class="tag">Java</span><span class="tag">Game</span></div>
-        </article>
+                <article class="card project reveal">
+                    <div class="title">
+                        <h3>My Language – Mini Compiler</h3>
+                        <a class="btn ghost" href="https://github.com/MasterChandana/my-language" target="_blank"
+                            rel="noopener" aria-label="Open My Language on GitHub">GitHub</a>
+                    </div>
+                    <p class="muted">Custom language with tokenizer, parser, and AST in <strong>JavaScript</strong>.
+                        Demonstrates
+                        compiler design concepts.</p>
+                    <div class="tags"><span class="tag">JavaScript</span><span class="tag">Compiler</span></div>
+                </article>
 
-        <article class="card project reveal">
-          <div class="title">
-            <h3>RecoMed (Hackathon)</h3>
-            <a class="btn ghost" href="https://github.com/Numericalalpha02/RecoMed" target="_blank" rel="noopener"
-              aria-label="Open RecoMed on GitHub">GitHub</a>
-          </div>
-          <p class="muted">Healthcare recommendation web app with <strong>HTML/CSS/JS</strong>. Won <em>Best UI</em> at
-            a hackathon.</p>
-          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
-          </div>
-        </article>
+                <article class="card project reveal">
+                    <div class="title">
+                        <h3>Tic‑Tac‑Toe</h3>
+                        <a class="btn ghost" href="https://github.com/MasterChandana/java_Tic_Tac_Toe" target="_blank"
+                            rel="noopener" aria-label="Open Tic Tac Toe on GitHub">GitHub</a>
+                    </div>
+                    <p class="muted">Classic game implemented in <strong>Java</strong> with focus on game logic and
+                        clean
+                        interaction.</p>
+                    <div class="tags"><span class="tag">Java</span><span class="tag">Game</span></div>
+                </article>
 
-        <article class="card project reveal">
-          <div class="title">
-            <h3>ATM Interface</h3>
-            <a class="btn ghost" href="https://github.com/MasterChandana/ATM-Interface" target="_blank" rel="noopener"
-              aria-label="Open ATM Interface on GitHub">GitHub</a>
-          </div>
-          <p class="muted">Java Swing application simulating core ATM operations with OOP design.</p>
-          <div class="tags"><span class="tag">Java</span><span class="tag">Swing</span></div>
-        </article>
-      </div>
-    </section>
+                <article class="card project reveal">
+                    <div class="title">
+                        <h3>RecoMed (Hackathon)</h3>
+                        <a class="btn ghost" href="https://github.com/Numericalalpha02/RecoMed" target="_blank"
+                            rel="noopener" aria-label="Open RecoMed on GitHub">GitHub</a>
+                    </div>
+                    <p class="muted">Healthcare recommendation web app with <strong>HTML/CSS/JS</strong>. Won <em>Best
+                            UI</em> at
+                        a hackathon.</p>
+                    <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span
+                            class="tag">JavaScript</span>
+                    </div>
+                </article>
 
-    <!-- Contact -->
-    <section id="contact">
-      <h2 class="reveal">Contact</h2>
-      <div class="card reveal">
-        <p class="muted">Open to internships and entry‑level software roles. Feel free to reach out!</p>
-        <p>
-          <strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a>
-          <br />
-          <strong>GitHub:</strong> <a href="https://github.com/MasterChandana" target="_blank"
-            rel="noopener">github.com/MasterChandana</a>
-          <br />
-          <strong>LinkedIn:</strong> <a href="#" target="_blank" rel="noopener">linkedin.com/in/your‑profile</a>
-        </p>
-      </div>
-    </section>
-  </main>
+                <article class="card project reveal">
+                    <div class="title">
+                        <h3>ATM Interface</h3>
+                        <a class="btn ghost" href="https://github.com/MasterChandana/ATM-Interface" target="_blank"
+                            rel="noopener" aria-label="Open ATM Interface on GitHub">GitHub</a>
+                    </div>
+                    <p class="muted">Java Swing application simulating core ATM operations with OOP design.</p>
+                    <div class="tags"><span class="tag">Java</span><span class="tag">Swing</span></div>
+                </article>
+            </div>
+        </section>
 
-  <footer>
-    <div class="container">© <span id="year"></span> M. Chandana Kumar Patra • Built with HTML, CSS & JS</div>
-  </footer>
+        <!-- Contact -->
+        <section id="contact">
+            <h2 class="reveal">Contact</h2>
+            <div class="card reveal">
+                <p class="muted">Open to internships and entry‑level software roles. Feel free to reach out!</p>
+                <div class="socials">
+                    <a href="mailto:cp987154@gmail.com" title="Email">
+                        <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                            <path fill="currentColor"
+                                d="M2.5 6.75V14c0 .966.784 1.75 1.75 1.75h11.5A1.75 1.75 0 0 0 17.5 14V6.75l-6.26 4.385a1.25 1.25 0 0 1-1.48 0L2.5 6.75Zm14.25-1.25a1.75 1.75 0 0 0-1.75-1.75H4.25A1.75 1.75 0 0 0 2.5 5.5v.296l7.01 4.906a.25.25 0 0 0 .29 0L17.5 5.796V5.5Z" />
+                        </svg>
+                    </a>
+                    <a href="https://github.com/MasterChandana" target="_blank" title="GitHub" rel="noopener">
+                        <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                            <path fill="currentColor"
+                                d="M10 1.5A8.5 8.5 0 0 0 1.5 10c0 3.77 2.44 6.94 5.82 8.08.43.08.58-.19.58-.42v-1.5c-2.37.52-2.87-1.14-2.87-1.14-.39-.98-.95-1.24-.95-1.24-.78-.53.06-.52.06-.52.86.06 1.3.89 1.3.89.77 1.32 2.01.94 2.5.72.08-.56.3-.94.54-1.15-1.89-.21-3.88-.94-3.88-4.19 0-.93.34-1.69.89-2.28-.09-.22-.39-1.09.08-2.27 0 0 .72-.23 2.36.88a8.08 8.08 0 0 1 2.15-.29c.73 0 1.47.1 2.16.29 1.64-1.11 2.36-.88 2.36-.88.48 1.18.18 2.05.09 2.27.56.59.89 1.35.89 2.28 0 3.26-2 3.97-3.9 4.19.31.28.58.83.58 1.68v2.5c0 .23.14.5.59.42A8.51 8.51 0 0 0 18.5 10 8.5 8.5 0 0 0 10 1.5Z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/m-chandana-kumar-patra-658a6b27a" target="_blank"
+                        title="LinkedIn" rel="noopener">
+                        <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                            <path fill="currentColor"
+                                d="M6.75 7.669v6.08a.67.67 0 0 1-.67.67H4.42a.67.67 0 0 1-.67-.67v-6.08c0-.37.3-.67.67-.67h1.66c.37 0 .67.3.67.67Zm-1.5-2.16a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Zm5.31 2.16v.84h-.02c-.18-.34-.66-.7-1.36-.7-1.12 0-1.7.75-1.7 2.08v3.88c0 .37.3.67.67.67h1.62a.67.67 0 0 0 .67-.67v-3.43c0-.41.07-.81.57-.81.48 0 .49.46.49.83v3.41c0 .37.3.67.67.67H15.7a.67.67 0 0 0 .67-.67v-3.75c0-1.68-.9-2.46-2.1-2.46-.9 0-1.3.5-1.44.84h-.02v-.67a.67.67 0 0 0-.67-.67h-1.63a.67.67 0 0 0-.67.67Z" />
+                        </svg>
+                    </a>
+                </div>
+                <p>
+                    <strong>Email:</strong> <a href="mailto:cp987154@gmail.com">cp987154@gmail.com</a>
+                    <br />
+                    <strong>GitHub:</strong> <a href="https://github.com/MasterChandana" target="_blank"
+                        rel="noopener">github.com/MasterChandana</a>
+                    <br />
+                    <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/m-chandana-kumar-patra-658a6b27a"
+                        target="_blank" rel="noopener">linkedin.com/in/m-chandana-kumar-patra-658a6b27a</a>
+                </p>
+            </div>
+        </section>
+    </main>
 
-  <script>
-    // Set current year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    <footer>
+        <div class="container">© <span id="year"></span> M. Chandana Kumar Patra • Built with HTML, CSS & JS</div>
+    </footer>
 
-    // Mobile menu toggle
-    const toggle = document.querySelector('.menu-toggle');
-    const menu = document.getElementById('primary-nav');
-    toggle?.addEventListener('click', () => {
-      const open = menu.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Close menu on link click (mobile)
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+        // Mobile menu toggle
+        const toggle = document.querySelector('.menu-toggle');
+        const menu = document.getElementById('primary-nav');
+        toggle?.addEventListener('click', () => {
+            const open = menu.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', String(open));
+        });
 
-    // Active link highlight on scroll
-    const links = Array.from(document.querySelectorAll('nav a'));
-    const sections = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const id = '#' + e.target.id;
-          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
-        }
-      })
-    }, { rootMargin: '-40% 0px -55% 0px', threshold: [0, 1] });
-    sections.forEach(s => io.observe(s));
+        // Close menu on link click (mobile)
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
 
-    // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    const revIO = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revIO.unobserve(e.target); } });
-    }, { threshold: 0.15 });
-    revealEls.forEach(el => revIO.observe(el));
+        // Active link highlight on scroll
+        const links = Array.from(document.querySelectorAll('nav a'));
+        const sections = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    const id = '#' + e.target.id;
+                    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+                }
+            })
+        }, { rootMargin: '-40% 0px -55% 0px', threshold: [0, 1] });
+        sections.forEach(s => io.observe(s));
 
-    // Cursor-follow glow
-    const glow = document.querySelector('.glow');
-    window.addEventListener('mousemove', (ev) => {
-      document.documentElement.style.setProperty('--mx', ev.clientX - 210 + 'px');
-      document.documentElement.style.setProperty('--my', ev.clientY - 210 + 'px');
-    });
-  </script>
+        // Scroll reveal
+        const revealEls = document.querySelectorAll('.reveal');
+        const revIO = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revIO.unobserve(e.target); } });
+        }, { threshold: 0.14 });
+        revealEls.forEach(el => revIO.observe(el));
+
+        // Cursor-follow glow
+        const glow = document.querySelector('.glow');
+        window.addEventListener('mousemove', (ev) => {
+            document.documentElement.style.setProperty('--mx', ev.clientX - 210 + 'px');
+            document.documentElement.style.setProperty('--my', ev.clientY - 210 + 'px');
+        });
+
+        // LITTLE STARS BACKGROUND ANIMATION
+        (() => {
+            const STAR_COLORS = ["#e8ecff", "#a9b2d6", "#7c5cff", "#fff", "#a4ffe4"];
+            const STAR_COUNT = 110;
+            const STAR_MIN_RADIUS = 0.6;
+            const STAR_MAX_RADIUS = 1.8;
+            const STAR_MIN_SPEED = 0.02;
+            const STAR_MAX_SPEED = 0.07;
+
+            const canvas = document.getElementById('stars-canvas');
+            let w = window.innerWidth, h = window.innerHeight;
+            let stars = [];
+
+            function randomBetween(a, b) { return a + Math.random() * (b - a); }
+            function randomColor() { return STAR_COLORS[Math.floor(Math.random() * STAR_COLORS.length)]; }
+
+            function createStar() {
+                const radius = randomBetween(STAR_MIN_RADIUS, STAR_MAX_RADIUS);
+                return {
+                    x: randomBetween(0, w),
+                    y: randomBetween(0, h),
+                    r: radius,
+                    color: randomColor(),
+                    baseAlpha: randomBetween(0.25, 0.85),
+                    twinkleSpeed: randomBetween(1, 2.5),
+                    twinklePhase: Math.random() * Math.PI * 2,
+                    speed: randomBetween(STAR_MIN_SPEED, STAR_MAX_SPEED) * (Math.random() > 0.5 ? 1 : -1)
+                }
+            }
+
+            function resizeCanvas() {
+                w = window.innerWidth;
+                h = window.innerHeight;
+                canvas.width = w;
+                canvas.height = h;
+            }
+
+            function animateStars() {
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, w, h);
+
+                for (let star of stars) {
+                    // Twinkling alpha
+                    let a = star.baseAlpha + 0.3 * Math.sin(Date.now() * 0.001 * star.twinkleSpeed + star.twinklePhase);
+                    a = Math.min(1, Math.max(0.05, a));
+                    ctx.globalAlpha = a;
+
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+                    ctx.fillStyle = star.color;
+                    ctx.shadowColor = star.color;
+                    ctx.shadowBlur = 7 * star.r;
+                    ctx.fill();
+
+                    ctx.shadowBlur = 0;
+                    ctx.globalAlpha = 1;
+
+                    // Shimmer drift
+                    star.x += star.speed;
+                    if (star.x < 0) star.x = w;
+                    if (star.x > w) star.x = 0;
+                }
+                requestAnimationFrame(animateStars);
+            }
+
+            function resetStars() {
+                stars = [];
+                for (let i = 0; i < STAR_COUNT; i++) stars.push(createStar());
+            }
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                resetStars();
+            });
+
+            resizeCanvas();
+            resetStars();
+            animateStars();
+        })();
+    </script>
 </body>
 
 </html>
