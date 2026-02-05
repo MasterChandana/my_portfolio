@@ -1,46 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>M. Chandana Kumar Patra • Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+:root{
+--bg:#0b1020;
+--panel:#12182e;
+--text:#e8ecff;
+--muted:#a9b2d6;
+--accent:#7c5cff;
+--accent-2:#34d399;
+--border:rgba(255,255,255,.08);
+--radius:18px;
+--gradient:linear-gradient(120deg,#7c5cff,#34d399);
+}
 body{
 font-family:Inter;
-background:#0b1020;
-color:#fff;
 margin:0;
+background:var(--bg);
+color:var(--text);
 }
-.container{max-width:1100px;margin:auto;padding:25px}
-.hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;margin-top:40px}
-.hero img{width:320px;height:320px;border-radius:50%;object-fit:cover;border:6px solid #7c5cff}
-h1{font-size:42px;color:#7c5cff;margin-bottom:10px}
-.badge{background:#1e2548;padding:6px 12px;border-radius:20px;margin:4px;display:inline-block}
-.card{background:#12182e;padding:20px;border-radius:16px;margin-top:25px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.container{max-width:1100px;margin:auto;padding:24px}
+header{position:sticky;top:0;background:#0b1020e6;border-bottom:1px solid var(--border)}
+.nav{display:flex;justify-content:space-between;align-items:center}
+.logo{width:46px;height:46px;border-radius:50%;border:2px solid var(--accent);display:grid;place-items:center;font-weight:800}
+.hero{display:grid;grid-template-columns:1.3fr .85fr;gap:40px;padding:60px 0}
+.card{background:#12182ee0;border:1px solid var(--border);border-radius:var(--radius);padding:28px}
+h1{font-size:46px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.badge{border:1px solid var(--border);padding:6px 12px;border-radius:999px;margin:4px;display:inline-block;font-family:Fira Code}
+.hero-img-photo{
+width:340px;height:340px;border-radius:50%;
+background:url('https://media.licdn.com/dms/image/v2/D5603AQGxrhQQXrSsbw/profile-displayphoto-scale_400_400/B56ZlLcRJhHMAg-/0/1757907399288?e=1772064000&v=beta&t=NTdj44vF2tzEHwHb0pgXE1eKBqvJRf-m320ORDaNJnU') center/cover;
+margin:auto;border:8px solid #111a3d;
+box-shadow:0 0 40px rgba(124,92,255,.4);
+}
+.grid{display:grid;gap:20px}
+.cols-3{grid-template-columns:repeat(3,1fr)}
+.cols-2{grid-template-columns:repeat(2,1fr)}
 .project{background:#1a2040;padding:18px;border-radius:16px}
-footer{text-align:center;margin-top:40px;padding:20px;border-top:1px solid #333}
-a{color:#34d399;text-decoration:none}
+footer{text-align:center;margin-top:50px;padding:20px;border-top:1px solid #333}
+canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
 </style>
 </head>
 
 <body>
+<canvas id="stars"></canvas>
+
+<header>
+<div class="container nav">
+<div style="display:flex;gap:15px;align-items:center">
+<div class="logo">CP</div>
+<b>M. Chandana Kumar Patra</b>
+</div>
+</div>
+</header>
 
 <div class="container">
 
 <!-- HERO -->
-<div class="hero">
-
-<div>
-<h1>SAP ABAP Developer • .NET • Java Backend Engineer</h1>
-
-<p>
-MCA student and SAP Certified Associate – ABAP Cloud.  
-Focused on enterprise application development using SAP ABAP, .NET and Java backend technologies.
-</p>
+<section class="hero">
+<div class="card">
+<h1>SAP ABAP Developer • .NET • Java Backend</h1>
+<p>SAP Certified Associate – ABAP Cloud.  
+Focused on enterprise ERP and backend development.</p>
 
 <div>
 <span class="badge">SAP ABAP</span>
@@ -50,86 +78,53 @@ Focused on enterprise application development using SAP ABAP, .NET and Java back
 <span class="badge">Spring Boot</span>
 <span class="badge">MySQL</span>
 </div>
-
 </div>
 
-<div style="text-align:center">
-<img src="https://media.licdn.com/dms/image/v2/D5603AQGxrhQQXrSsbw/profile-displayphoto-scale_400_400/B56ZlLcRJhHMAg-/0/1757907399288?e=1772064000&v=beta&t=NTdj44vF2tzEHwHb0pgXE1eKBqvJRf-m320ORDaNJnU">
-</div>
-
-</div>
+<div class="hero-img-photo"></div>
+</section>
 
 <!-- ABOUT -->
-<div class="card">
-<h2>About Me</h2>
-<p>
-I’m <b>M. Chandana Kumar Patra</b>, an MCA student and SAP Certified Associate – Back-End Developer (ABAP Cloud).  
-I specialize in SAP ABAP development and backend technologies including .NET and Java.
-I enjoy building enterprise applications, ERP solutions and real-world systems.
-</p>
-</div>
+<section class="card">
+<h2>About</h2>
+<p>I’m an MCA student and SAP Certified ABAP Developer passionate about enterprise applications and backend systems.</p>
+</section>
 
 <!-- SKILLS -->
-<div class="card">
-<h2>Skills</h2>
-
-<h3>SAP Technologies</h3>
-<p>SAP ABAP, S/4HANA, SAP ERP, Open SQL, Reports, Internal Tables</p>
-
-<h3>Backend Technologies</h3>
-<p>.NET Framework, ASP.NET Core, Java, Spring Boot, REST APIs</p>
-
-<h3>Tools & Database</h3>
-<p>MySQL, Firebase, Git, Postman, VS Code</p>
-
-</div>
+<section class="grid cols-3">
+<div class="card"><b>SAP</b><p>SAP ABAP, S/4HANA, Open SQL, Reports</p></div>
+<div class="card"><b>Backend</b><p>.NET, Java, Spring Boot, REST APIs</p></div>
+<div class="card"><b>Tools</b><p>MySQL, Git, Postman, Firebase</p></div>
+</section>
 
 <!-- PROJECTS -->
-<div class="card">
+<section class="card">
 <h2>Projects</h2>
+<div class="grid cols-2">
+<div class="project"><b>Employee Allocation (SAP)</b><p>Enterprise ABAP app using Z tables.</p></div>
+<div class="project"><b>Sales Report (SAP)</b><p>ABAP ALV Report using VBAK.</p></div>
+<div class="project"><b>Inventory System (.NET)</b><p>Desktop app with MySQL.</p></div>
+<div class="project"><b>ATM Interface (Java)</b><p>Java Swing banking simulation.</p></div>
+</div>
+</section>
 
-<div class="grid">
+<footer>© 2026 M. Chandana Kumar Patra</footer>
 
-<div class="project">
-<h3>Employee–Project Allocation System (SAP ABAP)</h3>
-<p>Enterprise SAP ABAP application using custom Z tables, Open SQL joins and reports.</p>
 </div>
 
-<div class="project">
-<h3>Sales Order Report (SAP)</h3>
-<p>ABAP report using SAP standard tables with validation and business logic.</p>
-</div>
+<script>
+// animated stars
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth;canvas.height=innerHeight;
+let stars=[...Array(120)].map(()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*2}));
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="#7c5cff";
+stars.forEach(s=>{ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.28);ctx.fill();s.x+=0.05;if(s.x>canvas.width)s.x=0;});
+requestAnimationFrame(draw);
+}
+draw();
+</script>
 
-<div class="project">
-<h3>ATM Interface (Java + MySQL)</h3>
-<p>Java Swing banking simulation with database integration.</p>
-</div>
-
-<div class="project">
-<h3>Todo App (Spring Boot)</h3>
-<p>Full-stack task manager with authentication and REST APIs.</p>
-</div>
-
-<div class="project">
-<h3>Inventory System (.NET)</h3>
-<p>Desktop application using .NET Framework and MySQL.</p>
-</div>
-
-</div>
-</div>
-
-<!-- CONTACT -->
-<div class="card">
-<h2>Contact</h2>
-<p>Email: <a href="mailto:cp987154@gmail.com">cp987154@gmail.com</a></p>
-<p>GitHub: <a href="https://github.com/MasterChandana">github.com/MasterChandana</a></p>
-<p>LinkedIn: <a href="https://www.linkedin.com/in/m-chandana-kumar-patra-658a6b27a">LinkedIn Profile</a></p>
-</div>
-
-<footer>
-© 2026 M. Chandana Kumar Patra
-</footer>
-
-</div>
 </body>
 </html>
